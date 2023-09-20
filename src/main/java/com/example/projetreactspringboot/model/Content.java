@@ -26,7 +26,7 @@ public class Content {
     private byte[] contentData;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "content_type",nullable = false)
+    @Column(name = "content_type",nullable = true)
     private ContentType contentType;
 
     @ManyToOne
@@ -50,6 +50,23 @@ public class Content {
         this.contentData = contentData;
         this.contentType = contentType;
         this.user = user;
+    }
+
+    public Content(String contentName, String description, byte[] contentData, ContentType contentType) {
+        this.contentName = contentName;
+        this.description = description;
+        this.contentData = contentData;
+        this.contentType = contentType;
+    }
+
+    public Content(String contentName, byte[] contentData, ContentType contentType) {
+        this.contentName = contentName;
+        this.contentData = contentData;
+        this.contentType = contentType;
+    }
+
+    public Content(String contentName) {
+        this.contentName = contentName;
     }
 
     public Content() {}

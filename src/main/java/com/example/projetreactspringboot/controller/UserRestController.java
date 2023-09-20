@@ -28,9 +28,9 @@ public class UserRestController {
         return userRepo.findAll();
     }
 
-    @GetMapping("/users")
+    @GetMapping("/users/username/{username}")
     @ResponseBody
-    public List<User> getByUsernameIsContainingIgnoreCase(@RequestParam String username)
+    public List<User> getByUsernameIsContainingIgnoreCase(@PathVariable String username)
         {
         if (userRepo.findByUsernameIsContainingIgnoreCase(username) == null){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
@@ -38,7 +38,7 @@ public class UserRestController {
         return userRepo.findByUsernameIsContainingIgnoreCase(username);
     }
 
-    @GetMapping("/users/{id}")
+    @GetMapping("/users/id/{id}")
     public Optional<User> getById(@PathVariable Long id)
         {
         if (userRepo.findById(id).isEmpty()){
@@ -51,7 +51,7 @@ public class UserRestController {
     @ResponseStatus(HttpStatus.CREATED)
     public void add(@RequestBody User user)
     {
-        userRepo.save(new User(user.getUsername(), user.getEmail()));
+        userRepo.save(new User(user.getUsername(),user.getPhoneNumber(), user.getEmail()));
     }
 
     @PutMapping("/users/{id}")

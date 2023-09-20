@@ -14,8 +14,7 @@ public interface ContentRepository extends JpaRepository<Content, Long> {
 
     List<Content> findByBirthdateAfter(LocalDate birthdate);
 
-    List<Content> findByContentTypePhoto(Content.ContentType PHOTO);
+    List<Content> findByContentType(Content.ContentType contentType);
 
-    List<Content> findByContentTypeVideo(Content.ContentType VIDEO);
 
 }

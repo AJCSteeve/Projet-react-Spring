@@ -1,6 +1,5 @@
 package com.example.projetreactspringboot.repository;
 
-import com.example.projetreactspringboot.model.Content;
 import com.example.projetreactspringboot.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
